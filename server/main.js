@@ -90,6 +90,7 @@ server.on('connection', socket => {
 const MOVE_SPEED = 15;
 const ORIGINAL_BALL_SPEED = 8;
 let BALL_SPEED = ORIGINAL_BALL_SPEED;
+let roundCount = 0;
 
 function constrain(a, min, max) {
   return Math.min(Math.max(a, min), max);
@@ -100,6 +101,7 @@ let gameGotReset = false;
 function resetGame() {
   BALL_SPEED = ORIGINAL_BALL_SPEED;
   ball = { ...originalBall };
+  roundCount = 0;
 }
 
 setInterval(() => {
@@ -148,6 +150,10 @@ setInterval(() => {
       })
       newBall = { ...originalBall };
       BALL_SPEED = ORIGINAL_BALL_SPEED;
+      roundCount++;
+      if (roundCount % 2 === 1) {
+        newBall.vx *= -1;
+      }
     }
 
     ball = newBall;
