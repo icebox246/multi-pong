@@ -98,6 +98,9 @@
 </script>
 
 <svelte:window on:keyup={handleKeyUp} on:keydown={handleKeyDown} />
+<svelte:head>
+  <title>Pong!</title>
+</svelte:head>
 
 <main>
   <h1>Pong</h1>
