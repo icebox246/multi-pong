@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let serverURL: string = '';
+
   import GameArea from './components/GameArea.svelte';
   import { tweened } from 'svelte/motion';
   import { linear } from 'svelte/easing';
@@ -16,7 +18,7 @@
   let ballX = tweened(320, tweenOptions);
   let ballY = tweened(240, tweenOptions);
 
-  const socket = new WebSocket('ws://localhost:8080');
+  const socket = new WebSocket(serverURL);
   let socketInterval = undefined;
   let playerUUID = undefined;
   let connected = false;
@@ -109,6 +111,7 @@
   />
   <h3 class="status" class:connected>CONNECTED</h3>
   <p>{closeError}</p>
+  <p>Your paddle is always on the left</p>
 </main>
 
 <style>
@@ -120,5 +123,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  :global(body) {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    background: radial-gradient(
+      circle 2500px at -10% -10%,
+      rgba(30, 39, 107, 1) 6.1%,
+      rgba(188, 104, 142, 1) 100.2%
+    );
   }
 </style>

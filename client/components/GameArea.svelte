@@ -25,11 +25,17 @@
 
 <style>
   .area {
-    background-color: black;
+    background: radial-gradient(
+      circle 1500px at 125% 125%,
+      rgb(20, 25, 63) 6.1%,
+      rgb(117, 65, 88) 100.2%
+    );
     width: 640px;
     height: 480px;
     position: relative;
     fill: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.671) 0px 5px 20px;
   }
   .line {
     height: 100%;

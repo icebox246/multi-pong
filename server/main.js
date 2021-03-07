@@ -2,9 +2,11 @@ const WebSocket = require('ws')
 const {
   v4: uuid4
 } = require('uuid')
+const dotenv = require('dotenv')
+dotenv.config();
 
 const server = new WebSocket.Server({
-  port: 8080
+  port: process.env.PORT
 })
 
 const originalBall = {
@@ -112,7 +114,6 @@ setInterval(() => {
   } else {
     gameRunning = false;
   }
-  console.log("player count ",players.length)
 
   if (gameRunning) {
     let newBall = ball;
